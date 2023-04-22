@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta name='viewport' content='width=device-width, user-scalable=no'>
+    <meta charset='UTF-8'>
+    <title>Accessible Map</title>
+    <script type='module' src='./js/index_bundle.js'></script>
+    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+    <script src='https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js'></script>
+    <!-- The lines below are only needed for old environments like Internet Explorer and Android 4.x -->
+    <script
+        src='https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js'></script>
+    <!--link rel='stylesheet' href='node_modules/ol/ol.css'-->
+    <link rel='stylesheet' href='./css/map.css'>
+    <link rel='stylesheet' href='./css/style.css'>
+    <link rel='stylesheet' href='./css/list.css'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap' rel='stylesheet'>
+    <script src='./js/data.js'></script>
+</head>
+
+<body id='body' onload='getButtons()'>
+    <a class='skiplink' href='#map'>Go to map</a>
+    <div id='map' class='map' autofocus></div>
+    <select id='itinerary' class='itinerary'>
+        <option value='0'>не выбрано</option>
+    </select>
+    <button id="edit" class="edit_itinerary" disabled>
+        <div class="edit_itinerary_icon"></div>
+    </button>
+    <button id="create_itinerary" class="create_itinerary">
+        <div class="create_itinerary_icon"></div>
+    </button>
+    <div class='popup' id='create_itinerary_popup' style='display: none;'>
+        <div class='text'>Создать маршрут</div>
+        <input type='text' id='create_itinerary_popup_name' class='popup_item' placeholder='название' maxlength='45'>
+        <div class='buttons'>
+            <input type='button' id='create_itinerary_popup_cancel' class='btn cancel' value='Отмена'>
+            <input type='submit' id='create_itinerary_popup_create' class='btn save' value='Сохранить'>
+        </div>
+    </div>
+
+    <div id='menu_button' class='menu_button'></div>
+
+    <!-- НЕ АВТОРИЗОВАН -->
+    <div class='authorisation_popup' id='authorisation_popup' style='display: none;'>
+        <div class='text'>Вы не авторизованы</div>
+        <div class='buttons'>
+            <input type='button' id='authorisation_popup_login' class='btn btn_settings' value='Войти'>
+            <input type='button' id='authorisation_popup_register' class='btn btn_settings' value='Зарегестрироваться'>
+        </div>
+    </div>
+
+    <!-- ПРОФИЛЬ ИНФО -->
+    <div class='profile_popup' id='profile_popup' style='display: none;'>
+        <div class='profile_title'>Профиль</div>
+        <div class='profile_info'>
+            <div class='profile_info_item'>
+                фио: <span id='profile_name'></span>
+            </div>
+            <div class='profile_info_item'>
+                логин: <span id='profile_login'></span>
+            </div>
+            <div class='profile_info_item'>
+                телефон: <span id='profile_telephone'></span>
+            </div>
+            <div class='profile_info_item'>
+                лицензия: <span id='profile_license'></span>
+            </div>
+        </div>
+
+        <div class='buttons'>
+            <input type='button' id='profile_popup_settings' class='btn btn_settings' value='Настройки'>
+            <input type='button' id='popup_users' class='btn' value='Пользователи'>
+            <input type='button' id='popup_shelters' class='btn' value='Остановки'>
+            <input type='button' id='popup_cars' class='btn' value='Автомобили'>
+            <input type='button' id='popup_logout' class='btn' value='Выйти'>
+        </div>
+    </div>
+
+    <!-- НАСТРОЙКИ -->
+    <div>
+        <form id='settings_popup' style='display: none;' class='form settings_popup' onsubmit='return false'
+            onload='isAdmin()'>
+            <h2 class='form-heading form-settings-heading'>Настройки профиля</h2>
+
+            <div class='field'>
+                <span class='title'>ФИО:</span>
+                <input type='text' id='settings_popup_name' class='form-input form-setting-input' name='username'
+                    maxlength='45'>
+            </div>
+            <div class='field'>
+                <span class='title'>Ник:</span>
+                <input type='text' id='settings_popup_login' class='form-input form-setting-input' name='login'
+                    maxlength='45'>
+            </div>
+            <div class='field'>
+                <span class='title'>Телефон:</span>
+                <input type='tel' id='settings_popup_tel'
+                    pattern='\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}'
+                    class='form-input form-setting-input' name='username' maxlength='45'
+                    placeholder='например: +7(999)999-99-99'>
+            </div>
+            <div class='field'>
+                <span class='title'>Лицензия:</span>
+                <input type='number' id='settings_popup_license' class='form-input form-setting-input' name='username'
+                    maxlength='45'>
+            </div>
+            <div class='field'>
+                <span class='title'>Новый пароль:</span>
+                <input id='settings_popup_password' type='password' class='form-input form-setting-input'
+                    name='password' maxlength='45'>
+            </div>
+            <div class='field'>
+                <span class='title'>Повторите пароль:</span>
+                <input id='settings_popup_r_password' type='password' class='form-input form-setting-input'
+                    name='password' maxlength='45'>
+            </div>
+
+            <label class='checkbox'>
+                Запомнить меня <input type='checkbox' value='remember-me' id='settings_popup_rememberMe'
+                    name='rememberMe'>
+            </label>
+
+            <div class='buttons'>
+                <input type='button' id='cancel' class='btn cancel' value='Отмена'>
+                <input type='submit' id='save_changes' class='btn save' value='Сохранить'>
+                <input type='button' id='settings_popup_logout' class='settings_popup_logout' value='Выйти'> <br>
+                <input type='button' id='delete_button' class='delete_button' value='Удалить аккаунт'>
+            </div>
+        </form>
+
+        <div class='delete_popup' id='delete_popup' style='display: none;'>
+            <div class='text'>Вы точно хотите удалить аккаунт?</div>
+            <div class='buttons'>
+                <input type='button' id='popup_cancel' class='btn' value='Cancel'>
+                <input type='button' id='popup_delete_account' class='btn popup_delete_account' value='Delete'>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЛОГИНАЦИЯ -->
+    <div id='login_popup' class='login_popup' style='display: none;' onsubmit='return false'>
+        <form class='form'>
+            <h2 class='form-heading'>Войти в систему</h2>
+            <input type='text' id='login_popup_login' class='form-input' name='username' placeholder='логин' autofocus
+                maxlength='45' required>
+            <input type='password' id='login_popup_password' class='form-input' name='password' placeholder='пароль'
+                maxlength='45'>
+            <label class='checkbox'>
+                <input type='checkbox' value='remember-me' id='rememberMe' name='rememberMe'>
+                Запомнить меня
+            </label>
+            <input type='submit' id='submit_login' class='btn submit_login' value='Login'>
+            <input type='button' id='login_popup_register' class='link' value='Зарегестрироваться'>
+        </form>
+    </div>
+
+    <!-- РЕГИСТРАЦИЯ -->
+    <div id='register_popup' class='register_popup' style='display: none;' onsubmit='return false'>
+        <form class='form'>
+            <h2 class='form-heading'>Создать аккаунт</h2>
+
+            <input id='register_popup_name' type='text' class='form-input' name='username' placeholder='ФИО' required
+                autofocus maxlength='45'>
+
+            <input id='register_popup_login' type='text' class='form-input' name='username' placeholder='логин' required
+                autofocus maxlength='45'>
+
+            <input type='tel' id='register_popup_telephone'
+                pattern='\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}' class='form-input'
+                name='username' maxlength='45' placeholder='телефон (например: +7(999)999-99-99)'>
+
+            <input type='number' id='register_popup_license' class='form-input' placeholder='лицензия' name='username'
+                maxlength='45'>
+
+            <input id='register_popup_password' type='password' class='form-input' name='password' placeholder='пароль'
+                required maxlength='45' minlength='6'>
+
+            <input id='register_popup_r_password' type='password' class='form-input' name='password'
+                placeholder='повторите пароль' required maxlength='45' minlength='6'>
+
+            <label class='checkbox'>
+                <input type='checkbox' value='remember-me' name='rememberMe'>
+                Запомнить меня
+            </label>
+            <input type='submit' id='register_submit' class='btn register_submit' value='Register'>
+
+            <input type='button' id='register_popup_login_in_account' class='link' value='Уже есть аккаунт? Войти'>
+        </form>
+    </div>
+
+    <!-- TODO добавить ошибки -->
+    <div class='error-message' id='error-message' style='display: none;'></div>
+    <div class='success-message' id='success-message' style='display: none;'></div>
+    <div class='simple-message' id='simple-message' style='display: none;'></div>
+
+    <script src='./js/map.js'></script>
+    <script src='./js/settings.js'></script>
+    <script src='./js/login.js'></script>
+    <script src='./js/register.js'></script>
+
+</body>
+
+</html>

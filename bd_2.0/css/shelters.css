@@ -1,0 +1,119 @@
+@import "./ol.css";
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  --main-color: #3C4B54;
+  --hover-color: #293237;
+}
+html, body {
+  height: 100%;
+}
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+.map {
+  width: 80%;
+  height: 100%;
+}
+#map:focus {
+  outline: #4A74A8 solid 0.15em;
+}
+
+/* какая-то нужная ссылка для карты */
+a.skiplink {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+a.skiplink:focus {
+  clip: auto;
+  height: auto;
+  width: auto;
+  background-color: #fff;
+  padding: 0.3em;
+}
+
+/* элемент списка */
+button[value="Delete"],
+button[value="Update"] {
+  background-color: #fff;
+  width: 17px;
+	height: 17px;
+  margin: 0 3px;
+	background-size: 100%;
+  opacity: 0.1;
+  border: none;
+  cursor: pointer;
+}
+button[value="Delete"] {
+	background-image: url('../images/x.png');
+}
+button[value="Update"] {
+	background-image: url('../images/edit.png');
+}
+button[value="Update"]:hover, 
+button[value="Delete"]:hover {
+  opacity: 0.7;
+}
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 80%;
+  padding: 5px 5px 3px;
+}
+
+/* список */
+.shelters_wrapper {
+  overflow: auto;
+  padding: 20px;
+  width: 20%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.shelters_wrapper h1 {
+  font-weight: 600;
+  padding: 5px; 
+}
+.shelters_wrapper::-webkit-scrollbar {
+  display: none;
+}
+.shelter, .new_shelter {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.new_shelter {
+  border: 1px solid #bbb;
+}
+.new_shelter input[type="text"] {
+  width: 87%;
+}
+.new_shelters {
+  margin: 20px 0;
+}
+
+/* кнопки */
+#cancel, #save_new {
+  width: 47.5%;
+  border: none;
+  height: 40px;
+  border-radius: 6px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+#save_new {
+  background-color: forestgreen;
+  color: #eee;
+}
+#save_new:hover {
+  background-color:rgb(21, 85, 21);
+}

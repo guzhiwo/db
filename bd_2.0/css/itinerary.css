@@ -1,0 +1,106 @@
+@import "./ol.css";
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 18px;
+  --main-color: #3C4B54;
+  --hover-color: #293237;
+}
+
+html, body {
+  height: 100%;
+}
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+.map {
+  width: 80%;
+  height: 100%;
+}
+#map:focus {
+  outline: #4A74A8 solid 0.15em;
+}
+
+/* какая-то нужная ссылка для карты */
+a.skiplink {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+a.skiplink:focus {
+  clip: auto;
+  height: auto;
+  width: auto;
+  background-color: #fff;
+  padding: 0.3em;
+}
+
+/* элемент списка */
+button[value="Up"],
+button[value="Down"] {
+  background-color: #fff;
+  width: 17px;
+	height: 17px;
+  margin: 0 3px;
+	background-size: 100%;
+  opacity: 0.2;
+  border: none;
+  cursor: pointer;
+}
+.arrow_wrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+button[value="Up"] {
+	background-image: url('../images/up.png');
+}
+button[value="Down"] {
+	background-image: url('../images/down.png');
+}
+button[value="Up"]:hover, 
+button[value="Down"]:hover {
+  opacity: 0.7;
+}
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 80%;
+  padding: 5px 5px 3px;
+}
+
+/* список */
+.shelters {
+  margin: 20px;
+}
+.shelter {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* кнопки */
+#cancel, #save_itinerary {
+  /* width: 47.5%; */
+  padding: 10px;
+  border: none;
+  height: 40px;
+  border-radius: 6px;
+  margin: 15px 15px 15px 5px;
+  cursor: pointer;
+}
+#save_itinerary {
+  background-color: forestgreen;
+  color: #eee;
+}
+#save_itinerary:hover {
+  background-color:rgb(21, 85, 21);
+} 

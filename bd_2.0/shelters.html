@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name='viewport' content='width=device-width, user-scalable=no'>
+  <meta charset='UTF-8'>
+  <title>Accessible Map</title>
+  <script type='module' src='./js/index_bundle_shelters.js'></script>
+  <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+  <script src='https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js'></script>
+  <!-- The lines below are only needed for old environments like Internet Explorer and Android 4.x -->
+  <script
+    src='https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js'></script>
+  <link rel='stylesheet' href='./css/style.css'>
+  <link rel='stylesheet' href='./css/list.css'>
+  <link rel='stylesheet' href='./css/shelters.css'>
+  <script src='./js/data.js'></script>
+</head>
+
+<body onload='isAdmin()'>
+  <a class='skiplink' href='#map'>Go to map</a>
+  <div class='wrapper'>
+    <div id='map' class='map' tabindex='0' autofocus></div>
+    <div id='shelters' class='shelters_wrapper'>
+      <div class='wrap'>
+        <h1>Остановки</h1>
+        <div id='go_back' onclick='window.open("./index.html", "_self")'></div>
+    </div>
+      <div id='new_shelters' class='new_shelters'></div>
+      <div id='old_shelters' class='old_shelters'></div>
+    </div>
+  </div>
+
+  <!-- TODO добавить ошибки -->
+  <div class='error-message' id='error-message' style='display: none;'></div>
+  <div class='success-message' id='success-message' style='display: none;'></div>
+  <div class='simple-message' id='simple-message' style='display: none;'></div>
+</body>
+
+</html>
