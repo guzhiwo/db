@@ -1,0 +1,136 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    --main-color: #3C4B54;
+    --hover-color: #293237;
+}
+body {
+	height: 100vh;
+}
+.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* список */
+.cars-block, .users-block {
+    width: 600px;
+    margin: 0 auto;
+}
+.cars-block_title, .users-block_title {
+    padding: 30px 0;
+	font-size: 35px;
+    font-weight: 800;
+}
+.car_item, .user_item {
+    border: 1px solid #ddd;
+	border-radius: 6px;
+	margin: 10px auto;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+.car_item_delete, .user_item_delete {
+    width: 17px;
+    height: 17px;
+    background-image: url('../images/x.png');
+    background-size: 100%;
+    opacity: 0.1;
+    cursor: pointer;
+}
+.car_item:hover .car_item_delete:hover,
+.car_item:hover .car_item_edit:hover,
+.user_item:hover .user_item_delete:hover,
+.user_item:hover .user_item_set_driver:hover,
+.user_item:hover .user_item_set_admin:hover {
+	opacity: 0.7;
+}
+.car_item_icons, .user_item_icons{
+	display: flex;
+	width: 44px;
+	justify-content: space-between;
+}
+
+/* назад */
+#go_back {
+	width: 30px;
+	height: 30px;
+	background-image: url('../images/x.png');
+	background-size: 100%;
+    opacity: 0.2;
+    cursor: pointer;
+    margin-right: 10px;
+}
+#go_back:hover {
+    opacity: 0.7;
+}
+
+/* сообщения */
+.error-message, .success-message, .simple-message {
+    padding: 10px;
+    margin: 20px auto 20px;
+    background-color: rgba(241, 241, 241, 0.6);
+    background-color : darkred;
+    color: #eee;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 40;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+}
+.success-message {
+    background-color:forestgreen;
+}
+.simple-message {
+    background-color:#3C4B54;
+}
+
+/* попап */
+.popup {
+    box-sizing: content-box;
+    width: 300px;
+    border-radius: 6px;
+    position: fixed;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    background-color: #eee;
+    color: #111;
+    z-index: 10;
+    margin: 200px auto;
+    box-shadow: 0 0 5px 2000px rgba(49, 49, 49, 0.7);
+    padding: 20px;
+}
+.popup .buttons {
+    display: flex;
+    margin-left: 40px;
+    justify-content: center;
+}
+.popup .buttons input {
+    width: 45%;
+}
+
+#set_driver_popup_cancel,
+#set_admin_popup_cancel,
+#edit_car_popup_cancel {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    color: #111;
+}
+
+#set_driver_popup_cancel:hover,
+#set_admin_popup_cancel:hover,
+#edit_car_popup_cancel:hover {
+    background-color: #ddd;
+
+
+}

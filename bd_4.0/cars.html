@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Cars</title>
+    <link rel='stylesheet' href='./css/list.css'>
+    <link rel='stylesheet' href='./css/cars.css'>
+    <link rel='stylesheet' href='./css/style.css'>
+    <script src='./js/data.js'></script>
+</head>
+
+<body id='body' onload='isDriver()'>
+    <div class='cars-block'>
+        <div class='wrap'>
+            <h1 class='cars-block_title'>Транспорт</h1>
+            <div id='go_back'></div>
+        </div>
+
+        <input type='button' id='add_car' class='btn' value='Добавить транспорт'>
+        <br><br>
+        <div class='car_item car_item_title'>
+            <div class='car_item_elem'>Название</div>
+            <div class='car_item_elem'>Номер</div>
+            <div class='car_item_elem'>Цвет</div>
+            <div class='car_item_icons car_item_elem'></div>
+        </div>
+        <div id='car_list'></div>
+    </div>
+
+    <div id='add_car_popup' class='popup' style='display: none;'>
+        <h2 class='text'>Добавить транспорт</h2>
+        <input type='text' id='add_car_popup_name' class='popup_item' placeholder='название транспорта' autofocus
+            maxlength='45'>
+        <input type='text' id='add_car_popup_number' class='popup_item' placeholder='номерной знак' maxlength='45'>
+        <input type='text' id='add_car_popup_color' class='popup_item' placeholder='цвет транспорта' maxlength='45'>
+
+        <div class='buttons'>
+            <input type='button' id='add_car_popup_cancel' class='btn popup_cancel' value='Отмена'>
+            <input type='button' id='popup_add' class='btn popup_add_button' value='Добавить'>
+        </div>
+    </div>
+
+    <div id='edit_car_popup' class='popup' style='display: none;'>
+        <h2 class='text'>Изменить транспорт</h2>
+        <div class='popup_block'>
+            название<input type='text' id='edit_car_popup_name' class='popup_item' placeholder='название транспорта'
+                autofocus maxlength='45'>
+        </div>
+        <div class='popup_block'>
+            номерной знак<input type='text' id='edit_car_popup_number' class='popup_item' placeholder='номерной знак'
+                maxlength='45'>
+        </div>
+        <div class='popup_block'>
+            цвет транспорта<input type='text' id='edit_car_popup_color' class='popup_item' placeholder='цвет транспорта'
+                maxlength='45'>
+        </div>
+
+        <div class='buttons'>
+            <input type='button' id='edit_car_popup_cancel' class='btn popup_cancel' value='Отмена'>
+            <input type='button' id='popup_edit' class='btn popup_add_button' value='Изменить'>
+        </div>
+    </div>
+
+    <div class='popup' id='delete_popup' style='display: none;'>
+        <div class='text'>Вы точно хотите удалить транспорт?</div>
+        <div class='buttons'>
+            <input type='button' id='delete_popup_cancel' class='btn' value='Cancel'>
+            <input type='button' id='popup_delete_account' class='btn popup_delete_account' value='Delete'>
+        </div>
+    </div>
+
+    <div class='error-message' id='error-message' style='display: none;'></div>
+    <div class='success-message' id='success-message' style='display: none;'></div>
+    <div class='simple-message' id='simple-message' style='display: none;'></div>
+
+    <script src='./js/cars.js'></script>
+</body>
+
+</html>
