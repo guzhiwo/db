@@ -1,0 +1,277 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    --main-color: #3C4B54;
+    --hover-color: #293237;
+    font-size: 17px;
+}
+
+.container {
+    background: url('../images/map.png') no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 150px 5px;
+}
+
+span {
+    color: #293237;
+}
+
+.title {
+    color: var(--main-color);
+    display: inline-block;
+    width: 30%;
+    min-width: 100px;
+    padding-right: 10PX;
+}
+
+.titles {
+    max-width: 600PX;
+    margin: 50px auto;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+
+/* форма с полями */
+.form-input:focus::-webkit-input-placeholder {
+    color: #eee;
+}
+
+.form-input:focus:-moz-placeholder {
+    color: #eee;
+}
+
+.form-input:focus::-moz-placeholder {
+    color: #eee;
+}
+
+.form-input:focus:-ms-input-placeholder {
+    color: #eee;
+}
+
+.form {
+    width: 80%;
+    max-width: 450px;
+    margin: 50px auto;
+    background-color: rgba(241, 241, 241, 0.7);
+    box-shadow: 0 0 5px 3px rgba(49, 49, 49, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 15px 0 25px 55px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.form:focus {
+    border-color: var(--main-color);
+}
+
+.form-heading {
+    padding: 0 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: 800;
+    color: #112;
+}
+
+.form-input {
+    margin: 5px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 90%;
+    background-color: rgba(241, 241, 241, 0.3);
+}
+
+.form-input:active,
+.form-input:focus {
+    outline: none;
+    background-color: var(--main-color);
+    color: #eee;
+}
+
+.form-setting-input {
+    width: 60%;
+    min-width: 200px;
+}
+
+.checkbox {
+    margin: 10px 0 20px;
+    display: block;
+}
+
+.field {
+    margin-bottom: 5px;
+}
+
+/* кнопки, ссылки */
+.link {
+    display: inline-block;
+    color: var(--hover-color);
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}
+
+.link:hover {
+    color: rgb(0, 21, 24);
+}
+
+.btn {
+    padding: 10px;
+    background-color: var(--main-color);
+    color: #eee;
+    border: 0px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--hover-color);
+    color: #eee;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.settings_popup_logout,
+.delete_button {
+    display: inline-block;
+    color: darkred;
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0 0;
+    width: 100%;
+    height: 45px;
+}
+
+
+/* удаление */
+.delete_popup {
+    box-sizing: content-box;
+    width: 300px;
+    height: 110px;
+    border-radius: 6px;
+    position: relative;
+    top: -300px;
+    background-color: #eee;
+    color: #111;
+    z-index: 10;
+    margin: 0 auto;
+    box-shadow: 0 0 5px 2000px rgba(49, 49, 49, 0.7);
+    padding: 10px 10px 20px;
+}
+
+.delete_popup .text {
+    padding: 15px;
+    text-align: center;
+}
+
+.delete_popup .buttons {
+    display: flex;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.popup_delete_account {
+    background-color: brown;
+}
+
+.popup_delete_account:hover,
+.delete_button:hover {
+    background-color: rgb(93, 0, 0);
+    color: #eee;
+}
+
+.profile_info {
+    margin-bottom: 20px;
+}
+
+/* настройки */
+.settings_popup_logout {
+    margin-top: 30px;
+}
+
+.settings_popup_logout:hover {
+    color: rgb(93, 0, 0);
+}
+
+.save {
+    margin-right: 0;
+}
+
+.save:hover {
+    background-color: rgb(21, 85, 21);
+}
+
+.cancel {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #ddd;
+    color: #111;
+}
+
+.cancel:hover,
+.settings_popup_logout:hover {
+    background-color: #ddd;
+    color: #111;
+}
+
+.save,
+.cancel {
+    margin-top: 20px;
+    width: 47%;
+    height: 45px;
+    text-align: center;
+}
+
+.save,
+#register_submit {
+    background-color: forestgreen;
+
+}
+
+/* сообщения */
+.error-message,
+.success-message,
+.simple-message {
+    padding: 10px;
+    margin: 20px auto 20px;
+    background-color: rgba(241, 241, 241, 0.6);
+    background-color: darkred;
+    color: #eee;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.success-message {
+    background-color: forestgreen;
+}
+
+.simple-message {
+    background-color: #3C4B54;
+}

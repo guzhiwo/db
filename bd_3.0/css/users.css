@@ -1,0 +1,73 @@
+/* список */
+.user_item_icons, .car_item_icons{
+	display: flex;
+	width: 44px;
+	justify-content: space-between;
+}
+.user_item_set_driver {
+	width: 22px;
+	height: 17px;
+	background: url('../images/car.png') no-repeat center;
+	background-size: 100%;
+	opacity: 0.1;
+	cursor: pointer;
+}
+.user_item_set_admin {
+	width: 17px;
+	height: 17px;
+	background-image: url('../images/admin.png');
+	background-size: 100%;
+	opacity: 0.1;
+	cursor: pointer;
+}
+
+/* попапы */
+.popup .text {
+    padding: 15px;
+    text-align: center;
+}
+
+
+.delete_popup .buttons {
+    display: flex;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+}
+.popup_delete_account {
+    background-color: brown;
+}
+.popup_delete_account:hover, .delete_button:hover {
+    background-color: rgb(93, 0, 0);
+    color: #eee;
+}
+
+/* переключатель */
+.form_toggle {
+	display: flex;
+	margin-bottom: 30px;
+}
+.form_toggle-item input[type=radio] {
+	display: none;
+}
+.form_toggle-item label {
+	display: inline-block;
+	padding: 0px 15px;   
+	line-height: 34px;    
+	border: 1px solid #ddd;
+	border-right: none;
+	cursor: pointer;
+	user-select: none;   
+}
+.form_toggle .item-1 label {
+	border-radius: 6px 0 0 6px;
+}
+.form_toggle .item-2 label {
+	border-radius: 0 6px 6px 0;
+	border-right: 1px solid #ddd;
+}
+.form_toggle .item-1 input[type=radio]:checked + label,
+.form_toggle .item-2 input[type=radio]:checked + label {
+	background: var(--main-color);
+    color: #eee;
+}

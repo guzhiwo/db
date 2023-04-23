@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta charset="UTF-8">
+  <title>Accessible Map</title>
+  <script type="module" src="./js/index_bundle_itinerary.js"></script>
+  <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+  <script src="https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js"></script>
+  <!-- The lines below are only needed for old environments like Internet Explorer and Android 4.x -->
+  <script
+    src="https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js"></script>
+  <!--link rel="stylesheet" href="node_modules/ol/ol.css"-->
+  <link rel="stylesheet" href="./css/shelters.css">
+  <link rel="stylesheet" href="./css/itinerary.css">
+  <script src="./js/data.js"></script>
+</head>
+
+<body onload='isAdmin()'>
+  <a class="skiplink" href="#map">Go to map</a>
+  <div class="wrapper">
+    <div id="map" class="map" tabindex="0" autofocus></div>
+    <div id="shelters">
+      <button id="save_itinerary" disabled="disabled">Сохранить</button>
+    </div>
+  </div>
+</body>
+</html>

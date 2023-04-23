@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Users</title>
+    <link rel='stylesheet' href='./css/style.css'>
+    <link rel='stylesheet' href='./css/list.css'>
+    <link rel='stylesheet' href='./css/users.css'>
+    <script src='./js/data.js'></script>
+</head>
+
+<body id='body' onload='isAdmin()'>
+    <div class='users-block'>
+        <div class='wrap'>
+            <h1 class='users-block_title'>Пользователи</h1>
+            <div id='go_back'></div>
+        </div>
+        <div class='form_toggle'>
+            <div class='form_toggle-item item-1'>
+                <input id='drivers' type='radio' name='radio' value='off' checked>
+                <label for='drivers'>Водители</label>
+            </div>
+            <div class='form_toggle-item item-2'>
+                <input id='administrators' type='radio' name='radio' value='on'>
+                <label for='administrators'>Админимтраторы</label>
+            </div>
+        </div>
+
+        <div id='user_list'></div>
+    </div>
+
+    <div class='popup' id='delete_popup' style='display: none;'>
+        <div class='text'>Вы точно хотите удалить пользователя?</div>
+        <div class='buttons'>
+            <input type='button' id='delete_popup_cancel' class='btn' value='Cancel'>
+            <input type='button' id='popup_delete_account' class='btn popup_delete_account' value='Delete'>
+        </div>
+    </div>
+
+    <div class='popup' id='set_admin_popup' style='display: none;'>
+        <div class='text'>Вы точно хотите сделать этого водителя администратором?</div>
+        <div class='buttons'>
+            <input type='button' id='set_admin_popup_cancel' class='btn' value='Cancel'>
+            <input type='button' id='popup_set_admin' class='btn ' value='Изменить'>
+        </div>
+    </div>
+
+    <div class='popup' id='set_driver_popup' style='display: none;'>
+        <div class='text'>Вы точно хотите сделать этого администратора водителем?</div>
+        <div class='buttons'>
+            <input type='button' id='set_driver_popup_cancel' class='btn' value='Cancel'>
+            <input type='button' id='popup_set_driver' class='btn ' value='Изменить'>
+        </div>
+    </div>
+
+    <!-- TODO добавить ошибки -->
+    <div class='error-message' id='error-message' style='display: none;'></div>
+    <div class='success-message' id='success-message' style='display: none;'></div>
+    <div class='simple-message' id='simple-message' style='display: none;'></div>
+    <script src='./js/users.js'></script>
+</body>
+
+</html>
