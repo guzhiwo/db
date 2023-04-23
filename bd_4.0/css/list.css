@@ -16,7 +16,8 @@ body {
 
 /* список */
 .cars-block, .users-block {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto;
 }
 .cars-block_title, .users-block_title {
