@@ -1,0 +1,81 @@
+/* список */
+.car_item_title {
+    border: none;
+    padding-bottom: 0;
+    font-weight: 600;
+}
+.car_item_elem {
+    width: 30%;
+    margin: 0 1%; 
+    overflow: hidden;
+}
+.car_item_edit {
+	width: 17px;
+	height: 17px;
+	background: url('../images/edit.png') no-repeat center;
+	background-size: 100%;
+	opacity: 0.1;
+    cursor: pointer;
+}
+.car_item_icons {
+    width: 7%;
+    min-width: 40px;
+}
+
+/* попапы */
+.popup .text {
+    padding: 5px 0 15px;
+    font-size: 20px;
+    text-align: center;
+}
+.popup_item {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    width: 90%;
+	border-radius: 6px;
+	margin: 5px auto;
+	padding: 10px;
+}
+.popup_block{
+	margin: 5px auto;
+}
+.popup_cancel, .popup_add_button {
+    width: 50%;
+}
+.popup_add_button {
+    background-color: forestgreen;
+    color: #eee;
+}
+.popup_add_button:hover, #add_car:hover {
+    background-color:rgb(21, 85, 21);
+}
+
+.popup_delete_account {
+    background-color: brown;
+    color: #eee;
+}
+.popup_delete_account:hover, .delete_button:hover {
+    background-color: rgb(93, 0, 0);
+    color: #eee;
+}
+
+/* кнопки */
+.btn {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+    color: #222;
+    border-radius: 6px;
+    margin: 5px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: var(--hover-color);
+    color: #eee;
+}
+
+#add_car {
+    background-color:forestgreen;
+    color: #eee;
+    font-weight: 600;
+}
