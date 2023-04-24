@@ -67,7 +67,7 @@ create_itinerary.onclick = async () => {
             localStorage.setItem('id_itinerary', listResult.itinerary.find(x => x.name === name).id)
             cancelPopup(popup, body)
             showSuccessBanner('Маршрут успешно добавлен')
-            window.open('./itinerary.html')
+            window.open('./itinerary.html', '_self')
         }
     }
 

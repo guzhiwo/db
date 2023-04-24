@@ -24,10 +24,9 @@ register_submit.onclick = async () => {
         }
         else {
             openMap(result)
+            window.open('./index.html', '_self')
+
             showSuccessBanner('Регистрация прошла успешно')
-            setTimeout(() => {
-                window.open('./index.html', '_self')
-            }, 2000)
         }
     }
     else {

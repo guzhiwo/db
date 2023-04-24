@@ -18,10 +18,9 @@ submit_login.onclick = async () => {
     }
     else {
         openMap(result)
+        window.open('./index.html', '_self')
         showSuccessBanner('Логинация прошла успешно')
-        setTimeout(() => {
-            window.open('./index.html', '_self')
-        }, 2000)
+
     }
 }
 

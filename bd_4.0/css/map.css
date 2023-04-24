@@ -121,6 +121,7 @@ a.skiplink:focus {
     border: none;
     box-shadow: 0 0 5px 3px rgba(49, 49, 49, 0.2);
     cursor: pointer;
+    width: 130px;
 }
 .cancel:hover, .settings_popup_logout:hover {
     background-color: #ddd;
