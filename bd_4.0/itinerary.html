@@ -13,6 +13,7 @@
     src="https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js"></script>
   <!--link rel="stylesheet" href="node_modules/ol/ol.css"-->
+  <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/shelters.css">
   <link rel="stylesheet" href="./css/itinerary.css">
   <script src="./js/data.js"></script>
@@ -24,7 +25,13 @@
     <div id="map" class="map" tabindex="0" autofocus></div>
     <div id="shelters">
       <button id="save_itinerary" disabled="disabled">Сохранить</button>
+      <button id="delete_itinerary" class="btn" style="background-color: #eee; color: #111;">Удалить маршрут</button>
     </div>
   </div>
+  <div class='error-message' id='error-message' style='display: none;'></div>
+  <div class='success-message' id='success-message' style='display: none;'></div>
+  <div class='simple-message' id='simple-message' style='display: none;'></div>
+  <script src="./js/itinerary.js"></script>
 </body>
+
 </html>
